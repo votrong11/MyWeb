@@ -35,7 +35,7 @@
 ### 🌐 Dự án: Trang web Portfolio cá nhân
 * **Mô tả:** Ứng dụng các kiến thức đã học về HTML và CSS để xây dựng giao diện hồ sơ trực tuyến.
 * **Kết quả đạt được:** Biết cách chia bố cục (Layout), làm giao diện phản hồi (Responsive) trên điện thoại và máy tính.
-* **Xem trang web chạy thực tế:** http://127.0.0.1:5500/index.html
+* **Xem trang web chạy thực tế:** [http://127.0.0.1:5500/index.html]
 
 ---
 
