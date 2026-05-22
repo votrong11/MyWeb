@@ -11,7 +11,7 @@
 * **Lớp:** CNTT19
 * **Khoa:** ĐIỆN-ĐIỆN TỬ
 * **Trường:** [CAO ĐẲNG KỸ THUẬT CÔNG NGHỆ NHA TRANG]
-* **Email sinh viên:** votrongaaa@gmail.co,
+* **Email sinh viên:** votrongaaa@gmail.com
 * **Định hướng:** Lập trình viên Website 
 
 ---
@@ -22,10 +22,7 @@
 
 | Tên Môn Học / Học Phần | Trạng Thái | Đánh Giá / Điểm Số |
 | :--- | :--- | :--- |
-| Nhập môn Lập trình (C/C++) | Đã hoàn thành | Điểm: A (8.5) |
-| Cấu trúc dữ liệu & Giải thuật | Đã hoàn thành | Điểm: B+ (8.0) |
 | Thiết kế Web cơ bản (HTML/CSS/JS) | **Đang học** | Đang làm bài tập lớn |
-| Cơ sở dữ liệu | Học kỳ tới | Chưa tích lũy |
 
 ### 🛠️ Kỹ năng công nghệ hiện tại:
 * **Ngôn ngữ:** HTML5, CSS3, JavaScript cơ bản.
