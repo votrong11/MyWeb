@@ -1,18 +1,18 @@
 # 🎓 HỒ SƠ SINH VIÊN & BÁO CÁO HỌC TẬP
 
 > **Bài tập cá nhân / Hồ sơ học tập**  
-> **Sinh viên thực hiện:** Nguyễn Văn A  
-> **Mã số sinh viên:** 24010xxxx  
+> **Sinh viên thực hiện:** Võ Văn Trọng 
+> **Mã số sinh viên:** CD-CDCNTT19A38 
 
 ---
 
 ## 👤 1. Thông Tin Cá Nhân
-* **Họ và tên:** Nguyễn Văn A
-* **Lớp:** Công nghệ thông tin Kxx
-* **Khoa:** Công nghệ thông tin
-* **Trường:** [Tên trường Đại học/Cao đẳng của bạn]
-* **Email sinh viên:** vana.sv@tentruong.edu.vn
-* **Định hướng:** Lập trình viên Website (Frontend / Backend)
+* **Họ và tên:** Võ Văn Trọng
+* **Lớp:** CNTT19
+* **Khoa:** ĐIỆN-ĐIỆN TỬ
+* **Trường:** [CAO ĐẲNG KỸ THUẬT CÔNG NGHỆ NHA TRANG]
+* **Email sinh viên:** votrongaaa@gmail.co,
+* **Định hướng:** Lập trình viên Website 
 
 ---
 
