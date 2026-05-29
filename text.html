@@ -5,26 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang phân tích URL</title>
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: 30px auto; }
-    .box { background: #f4f4f4; padding: 10px; font-family: monospace; }
-    li { margin: 8px 0; font-family: monospace; }
-    li strong { font-family: sans-serif; }
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; color: #333; }
+    .url-box { background: #eef2f7; padding: 12px; font-family: monospace; font-size: 15px; border-left: 4px solid #007bff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background: #007bff; color: white; }
+    td:first-child { font-weight: bold; color: #555; }
+    td:last-child { font-family: monospace; color: #d63384; }
   </style>
 </head>
 <body>
 
-  <h2>Phân Tích URL</h2>
-  <p>URL Mẫu:</p>
-  <div class="box">https://example.com/products/list?page=2#top</div>
+  <h2>Bộ Phân Tích Cấu Trúc URL</h2>
+  <p><strong>URL Mẫu:</strong></p>
+  <div class="url-box">https://example.com/products/list?page=2#top</div>
 
-  <h3>Các thành phần:</h3>
-  <ul>
-    <li><strong>Protocol:</strong> https</li>
-    <li><strong>Domain:</strong> example.com</li>
-    <li><strong>Path:</strong> /products/list</li>
-    <li><strong>Query:</strong> page=2</li>
-    <li><strong>Fragment:</strong> top</li>
-  </ul>
+  <h3>Kết quả phân tích chi tiết:</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Thành phần</th>
+        <th>Giá trị tách lọc</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Protocol</td><td>https</td></tr>
+      <tr><td>Domain</td><td>example.com</td></tr>
+      <tr><td>Path</td><td>/products/list</td></tr>
+      <tr><td>Query</td><td>page=2</td></tr>
+      <tr><td>Fragment</td><td>top</td></tr>
+    </tbody>
+  </table>
 
   </body>
 </html>
