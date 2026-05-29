@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form nhập URL</title>
+  <title>CSS nổi bật thành phần URL</title>
   <style>
     body { font-family: sans-serif; padding: 20px; }
     h1 { font-size: 20px; margin-bottom: 16px; }
-    form { display: flex; gap: 8px; }
-    input { flex: 1; padding: 8px 12px; font-size: 14px; border: 1px solid #ccc; border-radius: 6px; }
-    button { padding: 8px 16px; font-size: 14px; background: #2c2c2a; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+    p { font-family: monospace; font-size: 16px; }
+    .protocol { background: #B5D4F4; color: #0C447C; padding: 2px 6px; border-radius: 4px; }
+    .domain   { background: #9FE1CB; color: #085041; padding: 2px 6px; border-radius: 4px; }
+    .path     { background: #CECBF6; color: #3C3489; padding: 2px 6px; border-radius: 4px; }
   </style>
 </head>
 <body>
-  <h1>Phân tích URL</h1>
+  <h1>Tô nổi bật thành phần URL</h1>
 
-  <form>
-    <input type="text" placeholder="Nhập URL tại đây..." />
-    <button type="button">Phân tích URL</button>
-  </form>
+  <p>
+    <span class="protocol">https:</span>//<span class="domain">example.com</span><span class="path">/products/list</span>?page=2#top
+  </p>
 </body>
 </html>
