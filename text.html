@@ -3,110 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phân Tích Cấu Trúc URL</title>
+  <title>Trang phân tích URL</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-    h1 {
-      color: #333;
-      border-bottom: 2px solid #333;
-      padding-bottom: 10px;
-    }
-    .url-sample {
-      background-color: #f4f4f4;
-      padding: 15px;
-      border-left: 5px solid #007BFF;
-      font-family: Courier, monospace;
-      font-size: 1.1em;
-      word-break: break-all;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 12px;
-      text-align: left;
-    }
-    th {
-      background-color: #007BFF;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-    .component-name {
-      font-weight: bold;
-      color: #555;
-    }
-    .component-value {
-      font-family: Courier, monospace;
-      color: #d63384;
-    }
+    body { font-family: sans-serif; max-width: 600px; margin: 30px auto; }
+    .box { background: #f4f4f4; padding: 10px; font-family: monospace; }
+    li { margin: 8px 0; font-family: monospace; }
+    li strong { font-family: sans-serif; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ứng Dụng Phân Tích Cấu Trúc URL</h1>
-  </header>
 
-  <main>
-    <section>
-      <h3>URL Mẫu Phân Tích:</h3>
-      <p class="url-sample">https://example.com/products/list?page=2#top</p>
-    </section>
+  <h2>Phân Tích URL</h2>
+  <p>URL Mẫu:</p>
+  <div class="box">https://example.com/products/list?page=2#top</div>
 
-    <section>
-      <h3>Các thành phần chi tiết của URL:</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Thành phần (Component)</th>
-            <th>Giá trị cụ thể (Value)</th>
-            <th>Ý nghĩa (Description)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="component-name">Protocol (Giao thức)</td>
-            <td class="component-value">https</td>
-            <td>Quy định cách thức truyền tải dữ liệu an toàn giữa trình duyệt và server.</td>
-          </tr>
-          <tr>
-            <td class="component-name">Domain (Tên miền)</td>
-            <td class="component-value">example.com</td>
-            <td>Địa chỉ định danh của website trên mạng Internet.</td>
-          </tr>
-          <tr>
-            <td class="component-name">Path (Đường dẫn)</td>
-            <td class="component-value">/products/list</td>
-            <td>Dẫn đến tài nguyên hoặc trang cụ thể trên server.</td>
-          </tr>
-          <tr>
-            <td class="component-name">Query (Truy vấn)</td>
-            <td class="component-value">page=2</td>
-            <td>Chứa tham số gửi lên server để lọc hoặc phân trang dữ liệu (bắt đầu bằng dấu <code style="color: #333;">?</code>).</td>
-          </tr>
-          <tr>
-            <td class="component-name">Fragment (Phân đoạn)</td>
-            <td class="component-value">top</td>
-            <td>Định vị một vị trí/neo cụ thể trong trang HTML (bắt đầu bằng dấu <code style="color: #333;">#</code>).</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
+  <h3>Các thành phần:</h3>
+  <ul>
+    <li><strong>Protocol:</strong> https</li>
+    <li><strong>Domain:</strong> example.com</li>
+    <li><strong>Path:</strong> /products/list</li>
+    <li><strong>Query:</strong> page=2</li>
+    <li><strong>Fragment:</strong> top</li>
+  </ul>
 
-  <script>
-    // Bạn có thể thêm JavaScript vào đây nếu sau này cần xử lý logic phân tích tự động.
-    console.log("Trang phân tích URL đã sẵn sàng!");
-  </script>
-</body>
+  </body>
 </html>
