@@ -3,26 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phân tích URL</title>
+  <title>So sánh Domain, Hosting, URL</title>
   <style>
     body { font-family: sans-serif; padding: 20px; }
-    h1 { font-size: 20px; }
-    p { font-family: monospace; background: #eee; padding: 8px; }
-    ul { margin-top: 16px; }
-    li { margin-bottom: 8px; }
+    h1 { font-size: 20px; margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 10px 14px; text-align: left; }
+    th { background: #f0f0eb; font-weight: 600; }
+    tr:nth-child(even) { background: #fafafa; }
   </style>
 </head>
 <body>
-  <h1>Phân tích cấu trúc URL</h1>
+  <h1>So sánh Domain, Hosting, URL</h1>
 
-  <p>https://example.com/products/list?page=2#top</p>
-
-  <ul>
-    <li><strong>Protocol:</strong> https:</li>
-    <li><strong>Domain:</strong> example.com</li>
-    <li><strong>Path:</strong> /products/list</li>
-    <li><strong>Query:</strong> page=2</li>
-    <li><strong>Fragment:</strong> top</li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Khái niệm</th>
+        <th>Là gì</th>
+        <th>Ví dụ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Domain</strong></td>
+        <td>Tên địa chỉ của website trên Internet</td>
+        <td>example.com</td>
+      </tr>
+      <tr>
+        <td><strong>Hosting</strong></td>
+        <td>Máy chủ lưu trữ các file của website</td>
+        <td>Server chứa HTML, CSS, hình ảnh...</td>
+      </tr>
+      <tr>
+        <td><strong>URL</strong></td>
+        <td>Địa chỉ đầy đủ để truy cập một tài nguyên cụ thể</td>
+        <td>https://example.com/products/list?page=2#top</td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
