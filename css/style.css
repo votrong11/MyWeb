@@ -211,44 +211,112 @@ blockquote {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* 13. GALLERY & IMAGES - ĐÃ ĐỔI SANG CSS GRID ĐÚNG CÚ PHÁP */
+/* 13. GALLERY & RESPONSIVE GRID (Đúng yêu cầu đề bài) */
 #gallery { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
 
-.gallery-grid-container {
-    display: grid;                             /* Kích hoạt cấu trúc CSS Grid */
-    grid-template-columns: repeat(2, 1fr);     /* Tạo lưới gồm 2 cột đều nhau bằng repeat và fr */
-    gap: 25px;                                 /* Thiết lập khoảng cách giữa các ô */
-    margin-top: 30px;
+.portfolio-grid {
+    display: grid;
+    /* Dùng repeat, fr và gap đúng yêu cầu */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
 }
 
 .gallery-item {
     background: var(--card-bg);
     padding: 10px;
     border-radius: 8px;
-    transition: transform 0.3s ease;
 }
 
 .gallery-item img {
-    width: 100%;       
-    height: auto;         
-    aspect-ratio: 16 / 9;    
-    object-fit: cover;    
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 4px;
-    display: block;       
+    display: block;
 }
-.gallery-item figcaption { margin-top: 10px; color: var(--text-gray); font-size: 14px; text-align: center; }
-.gallery-item:hover { transform: scale(1.05); cursor: pointer; }
 
+/* Responsive - Đơn vị linh hoạt cho di động */
+@media (max-width: 1024px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .portfolio-grid { grid-template-columns: repeat(1, 1fr); }
+}
 /* 14. RESPONSIVE MEDIA QUERIES */
 @media (max-width: 768px) {
   .two-columns-layout, .content-layout {
     flex-direction: column;  
   }
-  .gallery-grid-container {
+  /* Điều chỉnh lưới cho điện thoại: để nhìn đẹp hơn, bạn có thể để 1 cột hoặc 2 cột */
+  .gallery-grid-container, #portfolio, .portfolio-grid {
+    grid-template-columns: repeat(1, 1fr);     /* Giữ 1 cột trên điện thoại để ảnh không bị quá nhỏ */
+  }
+  .topic-list {
+    flex-direction: column;  
+    gap: 15px;
+  }
+}
+/* 14. RESPONSIVE MEDIA QUERIES */
+@media (max-width: 768px) {
+  .two-columns-layout, .content-layout {
+    flex-direction: column;  
+  }
+  /* Đồng bộ cập nhật lưới về 1 cột trên giao diện điện thoại */
+  .gallery-grid-container, #portfolio, .portfolio-grid {
     grid-template-columns: repeat(1, 1fr);     /* Chuyển thư viện về lưới 1 cột khi thu nhỏ màn hình điện thoại */
   }
   .topic-list {
     flex-direction: column;  
     gap: 15px;
   }
+}
+/* 15. GALLERY GRID - Cấu trúc lưới theo yêu cầu đề bài */
+.portfolio-grid {
+    display: grid;
+    /* Dùng minmax để lưới tự thay đổi số cột tùy theo độ rộng màn hình */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* Hiệu ứng zoom nhẹ khi di chuột vào ảnh */
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px; /* Cố định chiều cao để ảnh đều nhau */
+    object-fit: cover; /* Giúp ảnh không bị méo */
+    display: block;
+}
+
+/* Dán đoạn này vào cuối file style.css */
+
+/* 1. Sửa lỗi Grid Gallery (yêu cầu 3 cột và height: auto) */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Chuẩn yêu cầu */
+    gap: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto; /* Chuẩn yêu cầu */
+    display: block;
+}
+
+/* 2. Responsive (yêu cầu 1 cột trên điện thoại) */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Chuẩn yêu cầu */
+    }
 }
