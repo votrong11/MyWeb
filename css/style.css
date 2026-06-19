@@ -1,0 +1,165 @@
+/* ==========================================================================
+   /* Chặng 1: liên kết CSS ngoài và selector cơ bản */
+   ========================================================================== */
+
+/* 1.1. Cài đặt các biến cấu hình màu sắc, font chữ (Variables) */
+:root {
+  --bg-dark: #0e131f;       /* Màu nền tối thể thao */
+  --card-bg: #182032;       /* Màu nền các hộp nội dung */
+  --primary: #00ff87;       /* Màu xanh cỏ phát sáng */
+  --secondary: #02d1ff;     /* Màu xanh dương bổ trợ */
+  --text-white: #ffffff;    /* Màu chữ trắng */
+  --text-gray: #94a3b8;     /* Màu chữ phụ xám */
+  --font-display: 'Montserrat', sans-serif;
+  --font-base: 'Roboto', sans-serif;
+}
+
+/* 1.2. Selector toàn cục (Universal Selector) - Reset khoảng cách lề */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1.3. Selector theo tên thẻ (Tag Selector) */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: var(--font-base);
+  line-height: 1.6;
+}
+
+main {
+  display: block;
+}
+
+/* Định dạng thanh Menu bằng Selector thẻ và class */
+header {
+  background-color: rgba(14, 19, 31, 0.95);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-white);
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+nav a {
+  color: var(--text-gray);
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+/* 1.4. Selector theo Class (Class Selector) áp dụng cho cấu trúc chung */
+.section-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary);
+}
+
+.site-footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 14px;
+  color: var(--text-gray);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   /* 1.5. ĐỊNH DẠNG TRANG CHỦ - GỌI FILE ẢNH CỤC BỘ TRONG THƯ MỤC IMG */
+   ========================================================================== */
+.hero {
+  height: 75vh; /* Chiều cao hiển thị banner trang chủ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  
+  /* ĐƯỜNG DẪN FILE ẢNH CỤC BỘ CHUẨN: Đi lùi ra khỏi css (../) rồi đi vào thư mục img */
+  background: linear-gradient(rgba(14, 19, 31, 0.8), rgba(14, 19, 31, 0.8)), 
+              url('../img/hero-bg.jpg') no-repeat center center/cover;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  color: var(--secondary);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+#main-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.intro {
+  font-size: 16px;
+  color: var(--text-gray);
+  margin-bottom: 35px;
+}
+
+/* Các nút bấm cơ bản trên trang chủ */
+.hero-buttons a {
+  display: inline-block;
+  padding: 12px 28px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #0e131f;
+}
+
+.btn-secondary {
+  border: 2px solid var(--text-white);
+  color: var(--text-white);
+}
