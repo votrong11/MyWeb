@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOCCERLIVE - Kênh Dữ Liệu Bóng Đá Tổng Hợp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <script src="../js/api.js" defer></script>
+</head>
+<body>
+
+  <img src="../img/hero.jpg" alt="Hero reference image" style="display: none;">
+  <img src="../img/hero-bg.jpg" alt="Hero background" style="display: none;">
+  <img src="../img/bg-footer.jpg" alt="Footer background" style="display: none;">
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">SOCCER<span>LIVE</span></div>
+      <nav class="main-nav">
+        <a href="#hero">Trang Chủ</a>
+        <a href="#scores">Tỷ Số & Lịch Đấu</a>
+        <a href="#standings">Bảng Xếp Hạng</a>
+        <a href="#stats">Thông Số Trận Đấu</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <p class="hero-subtitle">Hệ Thống Dữ Liệu Bóng Đá Toàn Cầu</p>
+        <h1 id="main-title">BẢNG TỶ SỐ & LỊCH THI ĐẤU REAL-TIME</h1>
+        <p class="intro">Cập nhật nhanh chóng kết quả trực tuyến, lịch thi đấu, bảng xếp hạng và thông số chi tiết.</p>
+        <div class="hero-buttons">
+          <a href="#scores" class="btn-primary">Xem Tỷ Số Live</a>
+          <a href="#standings" class="btn-secondary">Bảng Xếp Hạng</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-layout">
+      
+      <div class="main-content">
+        <section class="section-container" id="scores">
+          <h2 class="section-title">TỶ SỐ TRỰC TIẾP & LỊCH THI ĐẤU</h2>
+        </section>
+
+        <section class="section-container">
+          <h2 class="section-title">THÔNG TIN NỔI BẬT</h2>
+          <div class="card-flex-container">
+            <div class="card">
+              <h3>Trận Cầu Đinh</h3>
+              <p>Cập nhật diễn biến mới nhất giữa hai đội bóng hàng đầu thế giới ngay trong đêm nay.</p>
+            </div>
+            <div class="card">
+              <h3>Bảng Xếp Hạng</h3>
+              <p>Xem thứ hạng mới nhất của các đội bóng trong giải Ngoại hạng Anh mùa giải 2026.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="side-panel">
+        <div class="sidebar-box">
+          <h3>Bảng Tin Nhanh</h3>
+          <p>Hệ thống tự động đồng bộ dữ liệu Real-time từ các giải đấu châu Âu sau mỗi 30 giây.</p>
+        </div>
+        <div class="sidebar-box">
+          <h3>Giải Đấu Sắp Diễn Ra</h3>
+          <p>Đón xem các trận đấu nảy lửa thuộc khuôn khổ Ngoại Hạng Anh, La Liga và Champions League.</p>
+        </div>
+      </aside>
+      
+    </div>
+
+    <section id="about">
+      <ul class="topic-list">
+        <li>Cập nhật dữ liệu nhanh nhất 24/7</li>
+        <li>Thống kê chi tiết từng trận đấu</li>
+        <li>Bảng xếp hạng đầy đủ các giải đấu</li>
+      </ul>
+    </section>
+
+    <section id="features">
+      <div class="card-row">
+        <div class="feature-card">
+          <h3>Dữ liệu Real-time</h3>
+          <p>Cập nhật tỷ số trận đấu ngay khi bóng lăn.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Thống kê chi tiết</h3>
+          <p>Phân tích sâu về kiểm soát bóng và chỉ số cầu thủ.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Thông báo tức thì</h3>
+          <p>Không bỏ lỡ bất kỳ bàn thắng nào của đội bóng yêu thích.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2 class="section-title">THƯ VIỆN BÓNG ĐÁ</h2>
+      <div class="gallery-grid-container">
+        <figure class="gallery-item">
+          <img src="../img/3921.jpg" alt="Cầu thủ hành động">
+          <figcaption>Khoảnh khắc sân cỏ rực lửa</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="../img/san-vandong.jpg" alt="Sân vận động Old Trafford">
+          <figcaption>Thánh địa Old Trafford huyền thoại</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="style-guide">
+      <h2 class="section-title">STYLE GUIDE</h2>
+      <div class="swatches"></div>
+      <button class="primary-button">Nút Mẫu</button>
+      <p class="lead">Đây là phần văn bản dẫn dắt (lead) theo yêu cầu hệ thống.</p>
+      
+      <blockquote id="story">
+        "Bóng đá không chỉ là một trò chơi, đó là niềm đam mê kết nối toàn cầu."
+      </blockquote>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 SOCCERLIVE. Hệ thống thống kê dữ liệu bóng đá trực tuyến.</p>
+  </footer>
+</body>
+</html>

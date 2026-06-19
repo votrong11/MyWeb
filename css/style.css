@@ -1,165 +1,254 @@
-/* ==========================================================================
-   /* Chặng 1: liên kết CSS ngoài và selector cơ bản */
-   ========================================================================== */
-
-/* 1.1. Cài đặt các biến cấu hình màu sắc, font chữ (Variables) */
+/* 1. BIẾN MÀU SẮC & FONT */
 :root {
-  --bg-dark: #0e131f;       /* Màu nền tối thể thao */
-  --card-bg: #182032;       /* Màu nền các hộp nội dung */
-  --primary: #00ff87;       /* Màu xanh cỏ phát sáng */
-  --secondary: #02d1ff;     /* Màu xanh dương bổ trợ */
-  --text-white: #ffffff;    /* Màu chữ trắng */
-  --text-gray: #94a3b8;     /* Màu chữ phụ xám */
+  --bg-dark: #0e131f;
+  --card-bg: #182032;
+  --primary: #00ff87;
+  --text-white: #ffffff;
+  --text-gray: #94a3b8;
   --font-display: 'Montserrat', sans-serif;
   --font-base: 'Roboto', sans-serif;
 }
 
-/* 1.2. Selector toàn cục (Universal Selector) - Reset khoảng cách lề */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* 1.3. Selector theo tên thẻ (Tag Selector) */
-html {
-  scroll-behavior: smooth;
-}
-
+/* 2. RESET & CẤU TRÚC CHUNG */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
+  width: 100%;
+  min-height: 100vh;
   background-color: var(--bg-dark);
   color: var(--text-white);
   font-family: var(--font-base);
   line-height: 1.6;
+  text-align: left;
 }
 
-main {
-  display: block;
-}
-
-/* Định dạng thanh Menu bằng Selector thẻ và class */
-header {
+/* 3. HEADER & NAV SỬ DỤNG FLEXBOX */
+.site-header {
   background-color: rgba(14, 19, 31, 0.95);
   padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid var(--primary);
+}
+.header-container { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  display: flex;             
+  justify-content: space-between; 
+  align-items: center;       
+  padding: 0 20px; 
+}
+.logo { font-family: var(--font-display); font-size: 24px; font-weight: 900; color: var(--text-white); }
+.logo span { color: var(--primary); }
+
+.main-nav {
+  display: flex;             
+}
+.main-nav a { 
+  color: var(--text-gray); 
+  text-decoration: none; 
+  margin-left: 25px; 
+  font-weight: 500; 
 }
 
-.header-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.logo {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--text-white);
-}
-
-.logo span {
-  color: var(--primary);
-}
-
-nav a {
-  color: var(--text-gray);
-  text-decoration: none;
-  margin-left: 25px;
-  font-weight: 500;
-}
-
-nav a:hover {
-  color: var(--primary);
-}
-
-/* 1.4. Selector theo Class (Class Selector) áp dụng cho cấu trúc chung */
-.section-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 80px 20px;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 40px;
-  color: var(--primary);
-}
-
-.site-footer {
-  text-align: center;
-  padding: 30px;
-  font-size: 14px;
-  color: var(--text-gray);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ==========================================================================
-   /* 1.5. ĐỊNH DẠNG TRANG CHỦ - GỌI FILE ẢNH CỤC BỘ TRONG THƯ MỤC IMG */
-   ========================================================================== */
+/* 4. HERO SECTION SỬ DỤNG FLEXBOX */
 .hero {
-  height: 75vh; /* Chiều cao hiển thị banner trang chủ */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 70vh;
+  display: flex;             
+  flex-direction: column;    
+  align-items: center;       
+  justify-content: center;   
   text-align: center;
   padding: 0 20px;
-  
-  /* ĐƯỜNG DẪN FILE ẢNH CỤC BỘ CHUẨN: Đi lùi ra khỏi css (../) rồi đi vào thư mục img */
-  background: linear-gradient(rgba(14, 19, 31, 0.8), rgba(14, 19, 31, 0.8)), 
-              url('../img/hero-bg.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(14, 19, 31, 0.7), rgba(14, 19, 31, 0.7)), 
+              url('../img/hero-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.hero-buttons {
+  display: flex;             
+  justify-content: center;
 }
 
-.hero-content {
-  max-width: 800px;
-}
-
-.hero-subtitle {
-  font-family: var(--font-display);
-  color: var(--secondary);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
+/* 5. TYPOGRAPHY - ĐỊNH DẠNG VĂN BẢN */
 #main-title {
-  font-family: var(--font-display);
-  font-size: 42px;
-  font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 20px;
+    font-family: var(--font-display); 
+    font-size: 42px; 
+    font-weight: 900; 
+    line-height: 1.1; 
+    margin-bottom: 20px; 
+    color: var(--text-white);
+    text-transform: uppercase;
 }
-
+.hero-subtitle {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
 .intro {
-  font-size: 16px;
-  color: var(--text-gray);
-  margin-bottom: 35px;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+.section-title { 
+    font-family: var(--font-display); 
+    font-size: 30px; 
+    text-align: center; 
+    color: var(--primary); 
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
-/* Các nút bấm cơ bản trên trang chủ */
-.hero-buttons a {
-  display: inline-block;
-  padding: 12px 28px;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 4px;
-  margin: 0 10px;
+/* 6. CẤU TRÚC BỐ CỤC HAI VÙNG SỬ DỤNG FLEXBOX (Đồng bộ theo class mới) */
+.content-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;             
+  gap: 30px;                 
 }
 
-.btn-primary {
-  background-color: var(--primary);
-  color: #0e131f;
+.main-content {
+  flex: 3;                   
 }
 
-.btn-secondary {
-  border: 2px solid var(--text-white);
+.side-panel {
+  flex: 1;                   
+  display: flex;
+  flex-direction: column;    
+  gap: 20px;
+}
+
+.sidebar-box {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+.sidebar-box h3 { color: var(--primary); margin-bottom: 10px; font-size: 18px; }
+
+/* 7. CÁC SECTION NỘI DUNG */
+.section-container { padding: 40px 0; }
+#about { padding: 40px; background-color: var(--card-bg); }
+.topic-list { 
+  list-style: none; 
+  display: flex;             
+  justify-content: space-around; 
+  color: var(--text-white); 
+}
+
+/* 8. BUTTONS */
+.btn-primary { padding: 12px 28px; background-color: var(--primary); color: #0e131f; text-decoration: none; border-radius: 4px; font-weight: 700; }
+.btn-secondary { padding: 12px 28px; border: 2px solid var(--text-white); color: var(--text-white); text-decoration: none; border-radius: 4px; margin-left: 10px; font-weight: 700; }
+
+/* 9. FOOTER */
+.site-footer {
+  background: linear-gradient(rgba(14, 19, 31, 0.9), rgba(14, 19, 31, 0.9)), 
+              url('../img/bg-footer.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 50px 20px;
+  border-top: 2px solid var(--primary);
+  text-align: center;
   color: var(--text-white);
+}
+
+/* 10. STYLE GUIDE COMPONENTS */
+#style-guide { padding: 40px; background: var(--bg-dark); }
+.swatches { width: 50px; height: 50px; background-color: var(--primary); margin-bottom: 20px; }
+.primary-button { padding: 10px 20px; background-color: var(--primary); border: none; cursor: pointer; color: #0e131f; font-weight: 700; margin-bottom: 20px; }
+.lead { font-size: 20px; color: var(--text-white); margin: 20px 0; font-weight: 500; }
+
+blockquote {
+  border-left: 5px solid var(--primary);
+  padding: 20px;
+  background-color: var(--card-bg);
+  font-style: italic;
+  color: var(--text-gray);
+  margin: 30px 0;
+  line-height: 1.8;
+}
+
+/* 11. CARDS SỬ DỤNG FLEXBOX */
+.card-flex-container {
+    display: flex;           
+    flex-wrap: wrap;         
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    flex: 1;                 
+    min-width: 250px;        
+    background-color: var(--card-bg);
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+.card:hover { transform: translateY(-10px); }
+.card h3 { color: var(--primary); margin-bottom: 15px; }
+
+/* 12. FEATURES SECTION SỬ DỤNG FLEXBOX */
+#features { padding: 60px 20px; background-color: var(--bg-dark); }
+.card-row {
+    display: flex;           
+    flex-wrap: wrap;         
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.feature-card {
+    flex: 1;
+    min-width: 280px;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--primary);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 13. GALLERY & IMAGES - ĐÃ ĐỔI SANG CSS GRID ĐÚNG CÚ PHÁP */
+#gallery { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+
+.gallery-grid-container {
+    display: grid;                             /* Kích hoạt cấu trúc CSS Grid */
+    grid-template-columns: repeat(2, 1fr);     /* Tạo lưới gồm 2 cột đều nhau bằng repeat và fr */
+    gap: 25px;                                 /* Thiết lập khoảng cách giữa các ô */
+    margin-top: 30px;
+}
+
+.gallery-item {
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;       
+    height: auto;         
+    aspect-ratio: 16 / 9;    
+    object-fit: cover;    
+    border-radius: 4px;
+    display: block;       
+}
+.gallery-item figcaption { margin-top: 10px; color: var(--text-gray); font-size: 14px; text-align: center; }
+.gallery-item:hover { transform: scale(1.05); cursor: pointer; }
+
+/* 14. RESPONSIVE MEDIA QUERIES */
+@media (max-width: 768px) {
+  .two-columns-layout, .content-layout {
+    flex-direction: column;  
+  }
+  .gallery-grid-container {
+    grid-template-columns: repeat(1, 1fr);     /* Chuyển thư viện về lưới 1 cột khi thu nhỏ màn hình điện thoại */
+  }
+  .topic-list {
+    flex-direction: column;  
+    gap: 15px;
+  }
 }
