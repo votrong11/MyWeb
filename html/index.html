@@ -46,22 +46,25 @@
       
       <div class="main-content">
         <section class="section-container" id="scores">
-          <h2 class="section-title">TỶ SỐ TRỰC TIẾP & LỊCH THI ĐẤU</h2>
-        </section>
-
-        <section class="section-container">
-          <h2 class="section-title">THÔNG TIN NỔI BẬT</h2>
-          <div class="card-flex-container">
-            <div class="card">
-              <h3>Trận Cầu Đinh</h3>
-              <p>Cập nhật diễn biến mới nhất giữa hai đội bóng hàng đầu thế giới ngay trong đêm nay.</p>
-            </div>
-            <div class="card">
-              <h3>Bảng Xếp Hạng</h3>
-              <p>Xem thứ hạng mới nhất của các đội bóng trong giải Ngoại hạng Anh mùa giải 2026.</p>
-            </div>
-          </div>
-        </section>
+  <div class="wc-google-header">
+    <h2 class="section-title">DỮ LIỆU TRẬN ĐẤU TRỰC TIẾP</h2>
+    
+    <div class="league-filter-tabs">
+      <button class="league-tab active" data-league="all">Tất cả</button>
+      <button class="league-tab" data-league="World Cup">World Cup</button>
+      <button class="league-tab" data-league="Premier League">Ngoại Hạng Anh</button>
+      <button class="league-tab" data-league="La Liga">La Liga</button>
+      <!-- Nút mới thêm vào --> 
+      <button class="league-tab" data-league="others">Giải đấu khác</button>
+    </div>
+  </div>
+  
+  <div class="scores-container" id="fifa-live-scores">
+    <div style="color: #94a3b8; text-align: center; padding: 30px;">
+      Đang tải dữ liệu trực tuyến từ hệ thống...
+    </div>
+  </div>
+</section>
       </div>
 
       <aside class="side-panel">
@@ -88,7 +91,7 @@
     <section id="features">
       <div class="card-row">
         <div class="feature-card">
-          <h3>Dữ liệu Real-time</h3>
+          <h3>Dữ liệu Real-time</h3>  
           <p>Cập nhật tỷ số trận đấu ngay khi bóng lăn.</p>
         </div>
         <div class="feature-card">

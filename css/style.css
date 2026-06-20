@@ -320,3 +320,68 @@ blockquote {
         grid-template-columns: 1fr; /* Chuẩn yêu cầu */
     }
 }
+
+/* CSS định dạng riêng cho dữ liệu truyền về từ API FIFA */
+.fifa-flag-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.fifa-events-row {
+    font-size: 12px;
+    color: #94a3b8;
+    padding-left: 36px; /* Căn lề né logo đội bóng ra giống Google */
+    margin-top: -8px;
+    margin-bottom: 4px;
+    font-style: italic;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.fifa-events-row span {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+
+/* Thanh chọn giải đấu riêng biệt */
+.league-filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.league-tab {
+    background-color: #182032;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 20px; /* Bo tròn dạng viên thuốc giống Google */
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.league-tab:hover {
+    border-color: rgba(0, 255, 135, 0.3);
+    color: #ffffff;
+}
+
+/* Khi giải đấu được chọn sẽ sáng rực viền và chữ màu xanh neon */
+.league-tab.active {
+    background-color: rgba(0, 255, 135, 0.1);
+    color: #00ff87;
+    border-color: #00ff87;
+    font-weight: bold;
+}
