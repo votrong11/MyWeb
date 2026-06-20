@@ -385,3 +385,24 @@ blockquote {
     border-color: #00ff87;
     font-weight: bold;
 }
+
+#fifa-live-scores {
+    max-height: 650px;    /* Chiều cao tối đa cố định */
+    overflow-y: auto;     /* Tự động tạo thanh cuộn dọc khi dữ liệu tràn */
+    padding-right: 5px;   /* Khoảng trống để không bị đè nội dung card */
+}
+
+/* Làm thanh cuộn gọn gàng giống các trang thể thao cao cấp */
+#fifa-live-scores::-webkit-scrollbar {
+    width: 6px;
+}
+#fifa-live-scores::-webkit-scrollbar-track {
+    background: #0e131f;
+}
+#fifa-live-scores::-webkit-scrollbar-thumb {
+    background: #182032;
+    border-radius: 3px;
+}
+#fifa-live-scores::-webkit-scrollbar-thumb:hover {
+    background: #00ff87;   /* Đổi màu xanh neon khi di chuột vào thanh cuộn */
+}

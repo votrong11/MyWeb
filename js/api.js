@@ -252,7 +252,7 @@ function initLiveScoresSystem() {
 
         filteredMatches.forEach(match => {
             const status = match.fixture.status.short; 
-            const elapsedMinute = match.fixture.status.elapsed; 
+            const elapsedMinute = match.fixture.status.elapsed || 0; 
             const homeTeam = match.teams.home;
             const awayTeam = match.teams.away;
             const homeGoals = match.goals.home !== null ? match.goals.home : "-";
@@ -266,9 +266,9 @@ function initLiveScoresSystem() {
                     let icon = "⚽";
                     if (ev.type === "Card" && ev.detail === "Yellow Card") icon = "🟨";
                     if (ev.type === "Card" && ev.detail === "Red Card") icon = "🟥";
-                    const text = `${ev.player.name || 'Cầu thủ'} ${ev.time.elapsed}' ${icon}`;
-                    if (ev.team.id === homeTeam.id) homeEventsHtml += `<span>${text}</span>`;
-                    else if (ev.team.id === awayTeam.id) awayEventsHtml += `<span>${text}</span>`;
+                    const text = `<div style="font-size: 11px; color: #a0aec0; margin-top: 2px;">${ev.player.name || 'Cầu thủ'} ${ev.time.elapsed}' ${icon}</div>`;
+                    if (ev.team.id === homeTeam.id) homeEventsHtml += text;
+                    else if (ev.team.id === awayTeam.id) awayEventsHtml += text;
                 });
             }
 
@@ -285,21 +285,21 @@ function initLiveScoresSystem() {
                   <div class="wc-match-body">
                     <div class="wc-team-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                       <div class="wc-team-info" style="display: flex; align-items: center; gap: 10px;">
-                        <img src="${homeTeam.logo}" class="fifa-flag-img" alt="${homeTeam.name}">
+                        <img src="${homeTeam.logo}" class="fifa-flag-img" alt="${homeTeam.name}" style="width: 25px; height: 25px; object-fit: contain;">
                         <span class="wc-team-name" style="font-weight: 500;">${homeTeam.name}</span>
                       </div>
                       <span class="score" style="font-size: 20px; font-weight: bold; color: #00ff87;">${homeGoals}</span>
                     </div>
-                    <div class="fifa-events-row">${homeEventsHtml}</div>
+                    <div class="fifa-events-row" style="margin-bottom: 10px; padding-left: 35px;">${homeEventsHtml}</div>
                     
                     <div class="wc-team-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; margin-bottom: 8px;">
                       <div class="wc-team-info" style="display: flex; align-items: center; gap: 10px;">
-                        <img src="${awayTeam.logo}" class="fifa-flag-img" alt="${awayTeam.name}">
+                        <img src="${awayTeam.logo}" class="fifa-flag-img" alt="${awayTeam.name}" style="width: 25px; height: 25px; object-fit: contain;">
                         <span class="wc-team-name" style="font-weight: 500;">${awayTeam.name}</span>
                       </div>
                       <span class="score" style="font-size: 20px; font-weight: bold; color: #00ff87;">${awayGoals}</span>
                     </div>
-                    <div class="fifa-events-row">${awayEventsHtml}</div>
+                    <div class="fifa-events-row" style="padding-left: 35px;">${awayEventsHtml}</div>
                   </div>
                   
                   <div class="wc-match-footer" style="margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 12px; color: #94a3b8;">
