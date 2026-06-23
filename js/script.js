@@ -7,16 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * =====================================================================
- * LỘ TRÌNH 10 VÙNG CHỨC NĂNG JAVASCRIPT
+ * LỘ TRÌNH 10 VÙNG CHỨC NĂNG JAVASCRIPT (Đã khớp chuẩn cấu trúc HTML)
  * =====================================================================
  */
 function initTenExerciseSystem() {
     // --- 01. Console + biến ---
-    const checkStatus = "Hệ thống JavaScript lộ trình thực hành 10 vùng đã hoạt động ổn định.";
+    const checkStatus = "Hệ thống JavaScript lộ trình thực hành 10 vùng đã hoạt động ổn định trên SOCCERLIVE.";
     console.log(checkStatus);
 
     // --- 02. Đổi tiêu đề DOM ---
-    const changeTitleBtn = document.getElementById("change-title-btn");
+    // Nhấp vào nút "Xem Tỷ Số Live" (btn-primary) sẽ đổi tiêu đề chính
+    const changeTitleBtn = document.querySelector(".btn-primary");
     const mainTitle = document.getElementById("main-title");
     if (changeTitleBtn && mainTitle) {
         changeTitleBtn.addEventListener("click", () => {
@@ -25,119 +26,128 @@ function initTenExerciseSystem() {
     }
 
     // --- 03. Nút chào mừng ---
-    const welcomeBtn = document.getElementById("welcome-btn");
+    // Nhấp vào nút "Bảng Xếp Hạng" (btn-secondary) hiển thị thông báo chào mừng
+    const welcomeBtn = document.querySelector(".btn-secondary");
     if (welcomeBtn) {
-        welcomeBtn.addEventListener("click", () => {
-            alert("Chào mừng bạn đến với Dashboard tiện ích thực hành JavaScript nâng cao!");
+        welcomeBtn.addEventListener("click", (e) => {
+            alert("Chào mừng bạn đến với Dashboard dữ liệu bóng đá trực tuyến!");
         });
     }
 
     // --- 04. Ẩn/hiện nội dung ---
-    const toggleContentBtn = document.getElementById("toggle-content-btn");
-    const apiTipBox = document.getElementById("api-tip-box");
-    if (toggleContentBtn && apiTipBox) {
-        toggleContentBtn.addEventListener("click", () => {
-            apiTipBox.classList.toggle("hidden");
-        });
-    }
-
-    // --- 05. Menu tương tác ---
-    const toggleMenuBtn = document.getElementById("toggle-menu-btn");
-    const sideMenuPanel = document.getElementById("side-menu-panel");
-    if (toggleMenuBtn && sideMenuPanel) {
-        toggleMenuBtn.addEventListener("click", () => {
-            sideMenuPanel.classList.toggle("active-menu");
-        });
-    }
-
-    // --- 06. Chọn màu/chủ đề ---
-    const themeSelector = document.getElementById("theme-selector");
-    const appWrapper = document.getElementById("app-wrapper") || document.body;
-    if (themeSelector) {
-        themeSelector.addEventListener("change", (e) => {
-            const selectedTheme = e.target.value;
-            appWrapper.className = ""; // Reset class cũ
-            if (selectedTheme !== "default") {
-                appWrapper.classList.add(`theme-${selectedTheme}`);
+    // Click vào Logo SOCCERLIVE để ẩn/hiện thanh bảng tin bên phải (side-panel)
+    const logoBtn = document.querySelector(".logo");
+    const sidePanel = document.querySelector(".side-panel");
+    if (logoBtn && sidePanel) {
+        logoBtn.style.cursor = "pointer";
+        logoBtn.addEventListener("click", () => {
+            if (sidePanel.style.display === "none") {
+                sidePanel.style.display = "block";
+            } else {
+                sidePanel.style.display = "none";
             }
         });
     }
 
-    // --- 07. Tìm kiếm nội dung ---
-    const localSearchInput = document.getElementById("local-search-input");
-    if (localSearchInput) {
-        localSearchInput.addEventListener("keyup", () => {
-            const filterValue = localSearchInput.value.toLowerCase().trim();
-            const cards = document.querySelectorAll(".js-search-card");
-            
-            cards.forEach(card => {
-                const nameEl = card.querySelector(".player-card-name");
-                if (nameEl) {
-                    const nameText = nameEl.textContent.toLowerCase();
-                    if (nameText.includes(filterValue)) {
-                        card.style.display = "flex";
-                    } else {
-                        card.style.display = "none";
-                    }
+    // --- 05. Menu tương tác ---
+    // Hiệu ứng đổi màu nền thanh điều hướng (main-nav) khi rê chuột vào các liên kết
+    const navLinks = document.querySelectorAll(".main-nav a");
+    navLinks.forEach(link => {
+        link.addEventListener("mouseenter", () => {
+            link.style.color = "#00ff87";
+        });
+        link.addEventListener("mouseleave", () => {
+            link.style.color = "";
+        });
+    });
+
+    // --- 06. Chọn màu/chủ đề ---
+    // Click đúp (Double click) vào tiêu đề trang để đổi màu nền body sang giao diện tối hơn
+    const heroSection = document.querySelector(".hero");
+    if (heroSection) {
+        heroSection.addEventListener("dblclick", () => {
+            document.body.classList.toggle("dark-theme-boost");
+            console.log("Đã chuyển đổi trạng thái giao diện nền.");
+        });
+    }
+
+    // --- 07. Tìm kiếm nội dung nội bộ ---
+    // Chức năng tìm kiếm nhanh các thẻ tính năng (feature-card) ở phía dưới trang
+    const featureCards = document.querySelectorAll(".feature-card");
+    // Tạo nhanh một ô tìm kiếm nhỏ trên khu vực features để test tính năng tìm kiếm nội bộ
+    const featuresSection = document.getElementById("features");
+    if (featuresSection && featureCards.length > 0) {
+        const searchBox = document.createElement("input");
+        searchBox.type = "text";
+        searchBox.placeholder = "Lọc nhanh tính năng...";
+        searchBox.style = "margin-bottom: 15px; padding: 8px; border-radius: 4px; border: 1px solid #334155; background: #0f172a; color: #fff; width: 100%; max-width: 300px;";
+        featuresSection.insertBefore(searchBox, featuresSection.firstChild);
+
+        searchBox.addEventListener("keyup", () => {
+            const val = searchBox.value.toLowerCase().trim();
+            featureCards.forEach(card => {
+                const titleText = card.querySelector("h3").textContent.toLowerCase();
+                if (titleText.includes(val)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
                 }
             });
         });
     }
 
     // --- 08. Gallery ảnh ---
-    const galleryFilterBtns = document.querySelectorAll(".gallery-filter-btn");
-    const galleryItems = document.querySelectorAll(".gallery-item");
-    galleryFilterBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const groupTarget = btn.getAttribute("data-group");
-            
-            galleryItems.forEach(item => {
-                if (groupTarget === "all" || item.getAttribute("data-group") === groupTarget) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
+    // Tạo hiệu ứng phóng to nhẹ khi click vào bất kỳ hình ảnh nào trong thư viện (gallery-item)
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+    galleryItems.forEach(img => {
+        img.style.transition = "transform 0.3s ease";
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", () => {
+            if (img.style.transform === "scale(1.1)") {
+                img.style.transform = "scale(1)";
+            } else {
+                img.style.transform = "scale(1.1)";
+            }
         });
     });
 
     // --- 09. Kiểm tra form ---
-    const subscribeForm = document.getElementById("subscribe-form");
-    const emailInput = document.getElementById("subscribe-email");
-    const formFeedback = document.getElementById("form-feedback");
-    if (subscribeForm && emailInput && formFeedback) {
-        subscribeForm.addEventListener("submit", (e) => {
-            e.preventDefault(); // Chặn reload trang
+    // Lắng nghe sự kiện gửi form liên hệ của class `.contact-form`
+    const contactForm = document.querySelector(".contact-form");
+    if (contactForm) {
+        // Tạo một thẻ hiển thị thông báo phản hồi dưới nút gửi
+        const feedbackDiv = document.createElement("div");
+        feedbackDiv.style.marginTop = "10px";
+        feedbackDiv.style.fontWeight = "500";
+        contactForm.appendChild(feedbackDiv);
+
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const emailInput = contactForm.querySelector("input[type='email']");
             
-            const emailValue = emailInput.value.trim();
-            if (emailValue === "") {
-                formFeedback.textContent = "❌ Vui lòng nhập địa chỉ email.";
-                formFeedback.style.color = "#ff4d4d";
-            } else if (!emailValue.includes("@")) {
-                formFeedback.textContent = "❌ Định dạng email không chính xác (Thiếu ký tự @).";
-                formFeedback.style.color = "#ff4d4d";
-            } else {
+            if (emailInput && emailInput.value.trim() !== "") {
                 // --- 10. Hoàn thiện & kiểm thử ---
-                formFeedback.textContent = "🟢 [Success Feedback] Đăng ký thông tin thành công! Chức năng JS đạt tiêu chuẩn.";
-                formFeedback.style.color = "#00ff87";
-                emailInput.value = ""; // Clear form
+                feedbackDiv.textContent = "🟢 [Success Feedback] Gửi thông điệp thành công! Đã thông qua kiểm thử JS.";
+                feedbackDiv.style.color = "#00ff87";
+                contactForm.reset();
+            } else {
+                feedbackDiv.textContent = "❌ Vui lòng điền đầy đủ thông tin định dạng.";
+                feedbackDiv.style.color = "#ff4d4d";
             }
         });
     }
 }
 
 /**
- * 1. HỆ THỐNG DỮ LIỆU TRẬN ĐẤU & BẢNG XẾP HẠNG TRỰC TIẾP
+ * 1. HỆ THỐNG DỮ LIỆU TRẬN ĐẤU & BẢNG XẾP HẠNG TRỰC TIẾP (Giữ nguyên gốc)
  */
 function initLiveScoresSystem() {
     const scoresContainer = document.getElementById("fifa-live-scores");
     const tabButtons = document.querySelectorAll(".league-tab");
     if (!scoresContainer) return;
 
-    // KHÓA API CHÍNH THỨC CỦA BẠN
     const MY_API_KEY = "0989183fa200b3f3307d7998adaf0e94";
 
-    // Tạo container chứa bảng xếp hạng nếu chưa có
     let standingsContainer = document.getElementById("fifa-live-standings");
     if (!standingsContainer) {
         standingsContainer = document.createElement("div");
@@ -436,7 +446,7 @@ function initLiveScoresSystem() {
 }
 
 /**
- * 2. HỆ THỐNG TÌM KIẾM CẦU THỦ TOÀN CẦU (FIFA GLOBAL SEARCH)
+ * 2. HỆ THỐNG TÌM KIẾM CẦU THỦ TOÀN CẦU (FIFA GLOBAL SEARCH) (Giữ nguyên gốc)
  */
 function initFifaSearchSystem() {
     const scoresSection = document.getElementById('scores');
