@@ -1,8 +1,130 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // KÍCH HOẠT CÁC HỆ THỐNG
-    initFifaSearchSystem();
+    // KÍCH HOẠT CÁC HỆ THỐNG (Đưa lộ trình 10 vùng lên chạy đầu tiên)
+    initTenExerciseSystem(); 
     initLiveScoresSystem();
+    initFifaSearchSystem();
 });
+
+/**
+ * =====================================================================
+ * LỘ TRÌNH 10 VÙNG CHỨC NĂNG JAVASCRIPT
+ * =====================================================================
+ */
+function initTenExerciseSystem() {
+    // --- 01. Console + biến ---
+    const checkStatus = "Hệ thống JavaScript lộ trình thực hành 10 vùng đã hoạt động ổn định.";
+    console.log(checkStatus);
+
+    // --- 02. Đổi tiêu đề DOM ---
+    const changeTitleBtn = document.getElementById("change-title-btn");
+    const mainTitle = document.getElementById("main-title");
+    if (changeTitleBtn && mainTitle) {
+        changeTitleBtn.addEventListener("click", () => {
+            mainTitle.textContent = "🔥 ĐÃ CẬP NHẬT GIAO DIỆN PHÁT TRIỂN 2026 MỚI!";
+        });
+    }
+
+    // --- 03. Nút chào mừng ---
+    const welcomeBtn = document.getElementById("welcome-btn");
+    if (welcomeBtn) {
+        welcomeBtn.addEventListener("click", () => {
+            alert("Chào mừng bạn đến với Dashboard tiện ích thực hành JavaScript nâng cao!");
+        });
+    }
+
+    // --- 04. Ẩn/hiện nội dung ---
+    const toggleContentBtn = document.getElementById("toggle-content-btn");
+    const apiTipBox = document.getElementById("api-tip-box");
+    if (toggleContentBtn && apiTipBox) {
+        toggleContentBtn.addEventListener("click", () => {
+            apiTipBox.classList.toggle("hidden");
+        });
+    }
+
+    // --- 05. Menu tương tác ---
+    const toggleMenuBtn = document.getElementById("toggle-menu-btn");
+    const sideMenuPanel = document.getElementById("side-menu-panel");
+    if (toggleMenuBtn && sideMenuPanel) {
+        toggleMenuBtn.addEventListener("click", () => {
+            sideMenuPanel.classList.toggle("active-menu");
+        });
+    }
+
+    // --- 06. Chọn màu/chủ đề ---
+    const themeSelector = document.getElementById("theme-selector");
+    const appWrapper = document.getElementById("app-wrapper") || document.body;
+    if (themeSelector) {
+        themeSelector.addEventListener("change", (e) => {
+            const selectedTheme = e.target.value;
+            appWrapper.className = ""; // Reset class cũ
+            if (selectedTheme !== "default") {
+                appWrapper.classList.add(`theme-${selectedTheme}`);
+            }
+        });
+    }
+
+    // --- 07. Tìm kiếm nội dung ---
+    const localSearchInput = document.getElementById("local-search-input");
+    if (localSearchInput) {
+        localSearchInput.addEventListener("keyup", () => {
+            const filterValue = localSearchInput.value.toLowerCase().trim();
+            const cards = document.querySelectorAll(".js-search-card");
+            
+            cards.forEach(card => {
+                const nameEl = card.querySelector(".player-card-name");
+                if (nameEl) {
+                    const nameText = nameEl.textContent.toLowerCase();
+                    if (nameText.includes(filterValue)) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                }
+            });
+        });
+    }
+
+    // --- 08. Gallery ảnh ---
+    const galleryFilterBtns = document.querySelectorAll(".gallery-filter-btn");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+    galleryFilterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const groupTarget = btn.getAttribute("data-group");
+            
+            galleryItems.forEach(item => {
+                if (groupTarget === "all" || item.getAttribute("data-group") === groupTarget) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+    });
+
+    // --- 09. Kiểm tra form ---
+    const subscribeForm = document.getElementById("subscribe-form");
+    const emailInput = document.getElementById("subscribe-email");
+    const formFeedback = document.getElementById("form-feedback");
+    if (subscribeForm && emailInput && formFeedback) {
+        subscribeForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Chặn reload trang
+            
+            const emailValue = emailInput.value.trim();
+            if (emailValue === "") {
+                formFeedback.textContent = "❌ Vui lòng nhập địa chỉ email.";
+                formFeedback.style.color = "#ff4d4d";
+            } else if (!emailValue.includes("@")) {
+                formFeedback.textContent = "❌ Định dạng email không chính xác (Thiếu ký tự @).";
+                formFeedback.style.color = "#ff4d4d";
+            } else {
+                // --- 10. Hoàn thiện & kiểm thử ---
+                formFeedback.textContent = "🟢 [Success Feedback] Đăng ký thông tin thành công! Chức năng JS đạt tiêu chuẩn.";
+                formFeedback.style.color = "#00ff87";
+                emailInput.value = ""; // Clear form
+            }
+        });
+    }
+}
 
 /**
  * 1. HỆ THỐNG DỮ LIỆU TRẬN ĐẤU & BẢNG XẾP HẠNG TRỰC TIẾP
@@ -12,7 +134,7 @@ function initLiveScoresSystem() {
     const tabButtons = document.querySelectorAll(".league-tab");
     if (!scoresContainer) return;
 
-    // KHÓA API CHÍNH THỨC CỦA BẠN (Quản lý tập trung tại đây)
+    // KHÓA API CHÍNH THỨC CỦA BẠN
     const MY_API_KEY = "0989183fa200b3f3307d7998adaf0e94";
 
     // Tạo container chứa bảng xếp hạng nếu chưa có
@@ -27,17 +149,15 @@ function initLiveScoresSystem() {
     const BASE_URL = "https://v3.football.api-sports.io";
     const LIVE_MATCHES_URL = `${BASE_URL}/fixtures?live=all`; 
     
-    // Bản đồ ID giải đấu chuẩn theo cơ sở dữ liệu API-Football
     const LEAGUE_IDS = {
         "Premier League": 39,
         "La Liga": 140,
-        "World Cup": 1 // ID 1 là mã định danh chuẩn quốc tế của FIFA World Cup trên hệ thống API
+        "World Cup": 1
     };
 
     let allMatches = []; 
     let currentFilter = "all"; 
 
-    // Hàm lấy dữ liệu trận đấu trực tiếp
     async function getLiveScores() {
         try {
             const response = await fetch(LIVE_MATCHES_URL, {
@@ -59,22 +179,18 @@ function initLiveScoresSystem() {
         }
     }
 
-    // Hàm lấy dữ liệu Bảng xếp hạng trực tiếp (Hỗ trợ Mock Data 2026 cho World Cup)
     async function getLiveStandings(leagueId) {
-        
-        // KIỂM TRA NẾU LÀ WORLD CUP (ID = 1): Bẫy luồng trả về Mock Data World Cup 2026 ngay lập tức
         if (leagueId === 1) {
             standingsContainer.innerHTML = `<div style="color: #00ff87; text-align: center; padding: 15px;">🔄 Đang tải cơ sở dữ liệu FIFA World Cup 2026 (Bản Mock Data)...</div>`;
             
-            // Bộ dữ liệu giả lập World Cup 2026 cấu trúc đa bảng khớp hoàn toàn cấu trúc hàm render của bạn
             const mockWorldCup2026 = [
-                [ // MẢNG DỮ LIỆU BẢNG A
+                [ 
                     { rank: 1, team: { name: "United States (Chủ nhà)", logo: "https://media.api-football.com/teams/2384.png" }, all: { played: 3, win: 2, draw: 1, lose: 0 }, goalsDiff: 4, points: 7, group: "MÙA GIẢI 2026 - BẢNG A" },
                     { rank: 2, team: { name: "Mexico (Chủ nhà)", logo: "https://media.api-football.com/teams/2382.png" }, all: { played: 3, win: 2, draw: 0, lose: 1 }, goalsDiff: 2, points: 6, group: "MÙA GIẢI 2026 - BẢNG A" },
                     { rank: 3, team: { name: "Argentina", logo: "https://media.api-football.com/teams/26.png" }, all: { played: 3, win: 1, draw: 1, lose: 1 }, goalsDiff: 1, points: 4, group: "MÙA GIẢI 2026 - BẢNG A" },
                     { rank: 4, team: { name: "Vietnam (Dream)", logo: "https://media.api-football.com/teams/2400.png" }, all: { played: 3, win: 0, draw: 0, lose: 3 }, goalsDiff: -7, points: 0, group: "MÙA GIẢI 2026 - BẢNG A" }
                 ],
-                [ // MẢNG DỮ LIỆU BẢNG B
+                [ 
                     { rank: 1, team: { name: "France", logo: "https://media.api-football.com/teams/2.png" }, all: { played: 3, win: 3, draw: 0, lose: 0 }, goalsDiff: 6, points: 9, group: "MÙA GIẢI 2026 - BẢNG B" },
                     { rank: 2, team: { name: "England", logo: "https://media.api-football.com/teams/10.png" }, all: { played: 3, win: 1, draw: 1, lose: 1 }, goalsDiff: 0, points: 4, group: "MÙA GIẢI 2026 - BẢNG B" },
                     { rank: 3, team: { name: "Japan", logo: "https://media.api-football.com/teams/2379.png" }, all: { played: 3, win: 1, draw: 1, lose: 1 }, goalsDiff: -1, points: 4, group: "MÙA GIẢI 2026 - BẢNG B" },
@@ -82,15 +198,12 @@ function initLiveScoresSystem() {
                 ]
             ];
 
-            // Tạo hiệu ứng bất đồng bộ phản hồi sau 400ms để giống dữ liệu mạng thật
             setTimeout(() => {
                 renderStandings(mockWorldCup2026, "FIFA World Cup 2026", 1);
             }, 400); 
-            
-            return; // Ngắt hàm, không gửi request lên server API-Sports
+            return; 
         }
 
-        // ĐỐI VỚI PREMIER LEAGUE & LA LIGA: Giữ nguyên cơ chế gọi kết nối API thật
         const season = 2023; 
         standingsContainer.innerHTML = `<div style="color: #ffcc00; text-align: center; padding: 15px;">🔄 Đang kết nối trực tiếp đến máy chủ dữ liệu mùa giải ${season}...</div>`;
         
@@ -105,7 +218,6 @@ function initLiveScoresSystem() {
             });
             
             const data = await response.json();
-            console.log("Dữ liệu thô từ API trả về:", data);
 
             if (data.errors && Object.keys(data.errors).length > 0) {
                 standingsContainer.innerHTML = `<div style="color: #ff4d4d; padding: 15px; text-align: center;">Tài khoản API báo lỗi: ${JSON.stringify(data.errors)}</div>`;
@@ -115,8 +227,6 @@ function initLiveScoresSystem() {
             const leagueObj = data.response?.[0]?.league;
             const standingsData = leagueObj?.standings || [];
             const leagueName = leagueObj?.name || "Giải đấu";
-
-            console.log("Mảng BXH trích xuất được:", standingsData);
             
             if (standingsData.length === 0) {
                 standingsContainer.innerHTML = `
@@ -134,7 +244,6 @@ function initLiveScoresSystem() {
         }
     }
 
-    // Hàm dựng giao diện Bảng xếp hạng (Hỗ trợ cấu hình đa bảng đấu của World Cup)
     function renderStandings(standingsData, leagueName, leagueId) {
         if (!standingsData || standingsData.length === 0) {
             standingsContainer.innerHTML = `<div style="color: #94a3b8; text-align: center; padding: 15px;">Bảng xếp hạng giải đấu hiện tại đang được cập nhật cập nhật từ FIFA...</div>`;
@@ -142,18 +251,14 @@ function initLiveScoresSystem() {
         }
 
         let standingsHtml = "";
-
-        // Kiểm tra xem đây là giải đấu nhiều bảng (như World Cup) hay đá vòng tròn tính điểm (như Ngoại Hạng Anh)
         const isMultiGroup = Array.isArray(standingsData[0]);
 
         if (isMultiGroup) {
-            // DUYỆT QUA TỪNG BẢNG ĐẤU (Group A, Group B...) CỦA WORLD CUP
             standingsData.forEach(group => {
                 const groupName = group[0]?.group || "Bảng Đấu";
                 standingsHtml += createTableTemplate(group, groupName);
             });
         } else {
-            // ĐỐI VỚI NGOẠI HẠNG ANH / LA LIGA (Chỉ có 1 bảng duy nhất)
             standingsHtml += createTableTemplate(standingsData, "BẢNG XẾP HẠNG CHI TIẾT");
         }
 
@@ -169,7 +274,6 @@ function initLiveScoresSystem() {
         `;
     }
 
-    // Hàm bổ trợ: Tạo cấu trúc Table chuẩn CSS
     function createTableTemplate(teamsArray, title) {
         let rows = teamsArray.map(team => `
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px;">
@@ -213,7 +317,6 @@ function initLiveScoresSystem() {
         `;
     }
 
-    // Hàm lọc dữ liệu trận đấu theo Tab
     function renderMatches() {
         let filteredMatches = allMatches;
 
@@ -311,7 +414,6 @@ function initLiveScoresSystem() {
         });
     }
 
-    // Lắng nghe sự kiện click Tab giải đấu
     tabButtons.forEach(button => {
         button.addEventListener("click", () => {
             const activeTab = document.querySelector(".league-tab.active");
@@ -319,7 +421,6 @@ function initLiveScoresSystem() {
             button.classList.add("active");
 
             currentFilter = button.getAttribute("data-league");
-            
             renderMatches(); 
 
             if (LEAGUE_IDS[currentFilter]) {
@@ -402,6 +503,7 @@ function initFifaSearchSystem() {
 
             searchResults.forEach(item => {
                 const card = document.createElement('div');
+                card.className = 'js-search-card'; 
                 card.style.display = 'flex';
                 card.style.gap = '15px';
                 card.style.background = 'rgba(255, 255, 255, 0.03)';
@@ -414,7 +516,7 @@ function initFifaSearchSystem() {
                     <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=150&q=80" 
                         style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #00ff87; flex-shrink: 0;">
                     <div style="color: #fff; line-height: 1.4;">
-                        <h4 style="margin: 0 0 4px 0; font-size: 15px; color: #00ff87;">${item.title.replace(' (footballer)', '').replace(' (football player)', '')}</h4>
+                        <h4 class="player-card-name" style="margin: 0 0 4px 0; font-size: 15px; color: #00ff87;">${item.title.replace(' (footballer)', '').replace(' (football player)', '')}</h4>
                         <p style="margin: 0; font-size: 12px; color: #94a3b8;">${item.snippet.replace(/<\/?[^>]+(>|$)/g, "")}...</p>
                     </div>
                 `;
